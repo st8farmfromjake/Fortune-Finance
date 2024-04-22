@@ -26,7 +26,7 @@
                 @csrf
                 <div class="form-floating">
                     <label for="name"></label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Derrick Winner" required>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Your Name Here" required>
                     @error('name')
                     <div id='nameerror' class="form-text text-danger">{{$message}}</div>
                     @enderror
@@ -34,7 +34,7 @@
                 <br>
                 <div class="form-floating">
                     <label for="username"></label>
-                    <input type="text" class="form-control text-white" id="username" name="username" placeholder="Swag123MoneyZ" required>
+                    <input type="text" class="form-control text-white" id="username" name="username" placeholder="Username: (Ex: Swag123MoneyZ)" required>
                     @error('username')
                     <div id='usernameerror' class="form-text text-danger">{{$message}}</div>
                     @enderror
