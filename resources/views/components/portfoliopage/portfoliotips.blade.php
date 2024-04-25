@@ -19,7 +19,8 @@ $totalCapitalGains = number_format($totalCapitalGains, 2, '.', '');
 
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
     <div class="list-group">
-        <h3 class="mb-4 text-center">Portfolio Details:</h3>
+        <h3 class="mb-2 text-center">Portfolio Details:</h3>
+        <h5 class="mb-4 text-center">Total Amount You Invested: ${{$totalInvested}}</h5>
         <a class="list-group-item d-flex gap-3 py-3" aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
                 <div>
