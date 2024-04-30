@@ -45,7 +45,7 @@
         (async () => {
 
             const portfolioStocks = <?php echo json_encode($portfolioInfo); ?>
-            // console.log(ticker)
+            
             // Calculate today's date
             const today = new Date();
             const todayFormatted = today.toISOString().split('T')[0]; // Format: YYYY-MM-DD
@@ -62,14 +62,14 @@
             //DO MATH: GET CURRENT PORTFOLIO VALUE
             for (let i = 0; i < portfolioStocks.length; i++) {
                 //Math.round((num + Number.EPSILON) * 100) / 100
-                console.log(i);
+                // console.log(i);
 
-                let purchasePrice = parseInt(portfolioStocks[i]['buyin_price']);
+                let purchasePrice = parseFloat(portfolioStocks[i]['buyin_price']);
                 let sharesOwned = parseFloat(portfolioStocks[i]['amount_invested'] / purchasePrice);
                 let valueAndGain = (sharesOwned * portfolioStocks[i]['price']);
 
                 let formattedValue = Math.round(((valueAndGain + totalValue) + Number.EPSILON) * 100) / 100;
-
+                console.log(purchasePrice, sharesOwned, valueAndGain)
                 portfolioValueArray.push(formattedValue);
                 totalValue += parseFloat(valueAndGain);
                 totalPortfolioAmountInvested += parseFloat(portfolioStocks[i]['amount_invested']);

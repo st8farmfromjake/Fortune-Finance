@@ -18,10 +18,17 @@ class SinglestockController extends Controller
 
     public function search()
     {
-        if ($_GET['search']) {
-            $searchEntity = htmlspecialchars($_GET["search"]);
-            $header = 'http://127.0.0.1/stocks/stock/' . $searchEntity;
-            header($header);
+        if ($_GET) {
+            if (isset($_GET['search'])) {
+                $search = $_GET['search'];
+                // dd($search);
+                $protocol = isset($_SERVER['HTTPS']) &&
+                    $_SERVER['HTTPS'] === 'on' ? 'https://' : 'http://';
+                $base_url = $protocol . $_SERVER['HTTP_HOST'];
+    
+                header('Location: ' . $base_url . '/investments/stocks/' . $search);
+                exit;
+            }
         }
     }
 
@@ -29,8 +36,8 @@ class SinglestockController extends Controller
     {
         // dd(request());
         $validator = Validator::make(request()->all(), [
-            'amountInvested' => ['required', 'digits_between:1,9999999'],
-            'buyInPrice' => ['required', 'digits_between:0.01,999999'],
+            'amountInvested' => ['required', 'digits_between:1,9999999', 'numeric'],
+            'buyInPrice' => ['required', 'between:0.01,999999', 'numeric'],
             'ticker' => [],
         ]);
         
@@ -57,6 +64,6 @@ class SinglestockController extends Controller
 
 
         Singlestock::create($attributes);
-        return redirect('/')->with('success', 'Stock added to portfolio :)');
+        return redirect('/portfolio')->with('success', 'Stock added to portfolio :)');
     }
 }

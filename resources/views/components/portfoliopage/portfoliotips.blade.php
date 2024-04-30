@@ -10,8 +10,8 @@ for ($i= 0; $i < count($portfolioInfo); $i++) {
 }
 // dd($totalInvested);
 // dd($totalCapitalGains);
-$percentageGain = number_format(($totalCapitalGains/$totalInvested)*100, 2, '.', '');
-$totalCapitalGains = number_format($totalCapitalGains, 2, '.', '');
+$percentageGain = number_format(($totalCapitalGains/$totalInvested)*100, 2, '.', ',');
+$totalCapitalGains = number_format($totalCapitalGains, 2, '.', ',');
 
 
 
@@ -20,12 +20,12 @@ $totalCapitalGains = number_format($totalCapitalGains, 2, '.', '');
 <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
     <div class="list-group">
         <h3 class="mb-2 text-center">Portfolio Details:</h3>
-        <h5 class="mb-4 text-center">Total Amount You Invested: ${{$totalInvested}}</h5>
+        <h5 class="mb-4 text-center">Total Amount You Invested: ${{number_format($totalInvested, 2, '.', ',')}}</h5>
         <a class="list-group-item d-flex gap-3 py-3" aria-current="true">
             <div class="d-flex gap-2 w-100 justify-content-between">
                 <div>
                     <h6 class="mb-0">$ Total Capital Gains: ${{$totalCapitalGains}}</h6>
-                    <p class="mb-0 opacity-75">Your portfolios total capital gains are ${{$totalCapitalGains}}. </p>
+                    <p class="mb-0 opacity-75">Your portfolios has made you ${{$totalCapitalGains}} off of your invested ${{number_format($totalInvested, 2, '.', ',')}}. </p>
                 </div>
 
             </div>
